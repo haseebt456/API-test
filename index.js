@@ -18,6 +18,7 @@ function putUpdate(){
         success: function(response){
             console.log(response);
             loadRecipes();
+            $("#updatemodal").modal("hide");
         }
 });
 }
