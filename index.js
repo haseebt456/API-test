@@ -1,7 +1,22 @@
 $(function() {
     loadRecipes();
-    $("#recipes").on("click",".btn-danger",handleDelete)
+    $("#recipes").on("click",".btn-danger",handleDelete);
+    $("#addBtn").click(addRecipe);
 });
+
+function addRecipe(){
+    var title = $("#title").val();
+    var body = $("#body").val();
+    $.ajax({
+        url: "https://usman-fake-api.herokuapp.com/api/recipes",
+        method: "POST",
+        data: { title , body},
+        success: function(response){
+            console.log(response);
+            loadRecipes();
+        }
+    })
+}
 function handleDelete ()
 {
     var button=$(this);

@@ -13,7 +13,19 @@
 </head>
 <body class="container">
     <h1>Recipies API</h1>
-    <button class="btn btn-info">ADD Recipe</button>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text"
+        class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="Title of the recipe">
+      <small id="helpTitle" class="form-text text-muted">Enter title of the recipe</small>
+    </div>
+    <div class="form-group">
+      <label for="body">Body</label>
+      <input type="text"
+        class="form-control" name="body" id="body" aria-describedby="helpId" placeholder="Detail of the recipe">
+      <small id="helpBody" class="form-text text-muted">Enter Detail of the Recipe</small>
+    </div>
+    <button class="btn btn-info" id="addBtn">ADD Recipe</button>
     <div id="recipes">
         loading...
     </div>
