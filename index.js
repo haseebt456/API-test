@@ -21,6 +21,10 @@ function loadRecipes() {
     $.ajax({
         url: "https://usman-fake-api.herokuapp.com/api/recipes",
         method: "GET",
+        error: function(){
+            var recipes = $("#recipes");
+            recipes.html("An error has occured");
+        },
         success: function(response){
             console.log(response);
             var recipe=$("#recipes");
