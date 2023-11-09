@@ -2,8 +2,37 @@ $(function() {
     loadRecipes();
     $("#recipes").on("click",".btn-danger",handleDelete);
     $("#addBtn").click(addRecipe);
+    $("#recipes").on("click",".btn-warning",handleUpdate);
+    $("#updateSave").click(putUpdate);
 });
 
+function putUpdate(){
+    var id = $("#updateid").val();
+    var title = $("#updatetitle").val();
+    var body = $("#updatebody").val();
+
+    $.ajax({
+        url:"https://usman-fake-api.herokuapp.com/api/recipes/"+id,
+        method: "PUT",
+        data : {title , body},
+        success: function(response){
+            console.log(response);
+            loadRecipes();
+        }
+});
+}
+function handleUpdate(){
+    var editbtn = $(this);
+    var parentDiv = editbtn.closest(".recipe");
+    var id = parentDiv.attr("data-id");
+    $.get("https://usman-fake-api.herokuapp.com/api/recipes/"+id, function(response){
+        $("#updateid").val(response._id);
+        $("#updatetitle").val(response.title);
+        $("#updatebody").val(response.body);
+        $("#updatemodal").modal("show");
+
+    });
+}
 function addRecipe(){
     var title = $("#title").val();
     var body = $("#body").val();
